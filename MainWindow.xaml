@@ -1,0 +1,72 @@
+﻿<Window x:Class="WPF_ChineseChess.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_ChineseChess"
+        mc:Ignorable="d"
+        Icon="Resources/logo.png"
+        Title="WPF Chinese Chess"
+        SizeToContent="Width"
+        Height="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize">
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/background.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" Margin="25,25,25,25">
+            <!--The chess panel layout-->
+            <Grid Name="chessPanel" Height="730" Width="640" VerticalAlignment="Center">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Resources/panel.png"/>
+                </Grid.Background>
+                <!--Implement of chess board in .cs-->
+            </Grid>
+            
+            <!--Sidebar options layout-->
+            <StackPanel Name="Sidebar" Width="300" VerticalAlignment="Center" Margin="25,0,0,0">                
+                <StackPanel Name="gameOptions">
+                    <TextBlock Text="GAME OPTIONS" TextAlignment="Center" FontFamily="Foo" FontSize="30"/>
+                    <Button Name="btnStart" Content="Start" Click="btnStart_Click" Style="{StaticResource MyButton}"/>
+                    <Button Name="btnRestart" Content="Restart" Click="btnRestart_Click" Visibility="Collapsed" Style="{StaticResource MyButton}"/>
+                    <Button Name="btnRegret" Content="Regret" Click="btnRegret_Click" Visibility="Collapsed" Style="{StaticResource MyButton}"/>
+                    <Image Source="Resources/border.png" Margin="0,25,0,35"/>
+                </StackPanel>
+                <!--TODO: COLLAPSED-->
+                <StackPanel Name="ManualMode" Visibility="Visible">
+                    <TextBlock Text="MANUAL MODE" TextAlignment="Center" FontFamily="Foo" FontSize="30"/>
+                    <Button Name="btnPlay" Content="Play Manual" Click="btnPlay_Click" Style="{StaticResource MyButton}"/>
+                    <Button Name="btnOpen" Content="Open Manual" Click="btnOpen_Click" Style="{StaticResource MyButton}"/>
+                    <StackPanel Name="URL" Margin="0,5,0,10" Visibility="Visible">
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="LightGray" Opacity="0.8"/>
+                        </StackPanel.Background>
+                        <TextBlock Text="Current Manual:" FontSize="20" FontFamily="Impact" Margin="10"/>
+                        <TextBlock Text="URL:" FontSize="18" FontFamily="Impact" FontStyle="Italic"
+                                    Foreground="SlateGray" TextWrapping="Wrap" Margin="15,-10,15,10">
+                            <TextBlock.TextDecorations>
+                                <TextDecoration/>
+                            </TextBlock.TextDecorations>
+                        </TextBlock>
+                    </StackPanel>
+                    <Image Source="Resources/border.png" Margin="0,25,0,35"/>
+                </StackPanel>
+                <!--TODO: COLLAPSED-->
+                <StackPanel Name="GameMessage" Visibility="Visible">
+                    <TextBlock Text="GAME MESSAGE" TextAlignment="Center" FontFamily="Foo" FontSize="30"/>
+                    <TextBlock Name="txtblkRound" Text="Round" FontSize="25" FontFamily="Impact" Margin="0,10,0,5"/>
+                    <StackPanel Name="stckpnlCrrClr" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="Red"/>
+                        </StackPanel.Background>
+                        <TextBlock Name="txtblkCrrClr" Text="Current Color" FontSize="25" FontFamily="Impact" Margin="5"/>
+                        <TextBlock Name="txtblkTimer" Text="( 60 )" FontSize="25" FontFamily="Impact" Margin="5"/>
+                    </StackPanel>
+                    <TextBlock Name="txtblkMessage" Text="Clicking Location: 6,8" FontSize="25" FontFamily="Impact" TextAlignment="Center" Margin="0,15,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
